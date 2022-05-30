@@ -552,8 +552,8 @@ def join_amino(args):
         args.subClient.send_message(args.chatId, "Allready joined!")
         return
 
-key="0cced82b-5574-4e73-bc74-2032b45eeb9f"
-app_name="cat9922"
+key="5faf5ba7-fd3d-4005-a49d-ce64b74a9490"
+app_name="baba9922"
 
 def restarts():
     heroku_conn = heroku3.from_key(key)
