@@ -20,7 +20,7 @@ test4=tvs["filee"]
 test2=dbmm['files']
 #path_utilities = "utilities"
 #path_amino = f'{path_utilities}/amino_list'
-path_wel = 'welcome_list'
+#path_wel = 'welcome_list'
 
 def print_exception(exc):
     print(repr(exc))
@@ -72,8 +72,8 @@ class Bot(SubClient, ACM):
         if z==0:
         	self.create_community_filee()
         
-        if not Path(f'{path_wel}/{self.community_amino_id}.txt').exists():
-        	self.create_wel_msg()
+       # if not Path(f'{path_wel}/{self.community_amino_id}.txt').exists():
+        	#self.create_wel_msg()
 
         
 
@@ -91,7 +91,7 @@ class Bot(SubClient, ACM):
         self.muted_users = self.get_file_inf("muted_users")
         self.comids= self.get_file_inf("comids")       
         # self.activity_status("on")
-        #new_users = self.get_all_users(start=0, size=30, type="recent")
+        #new_users = self.get_all_users(start=0, size=10, type="recent")
 
         #self.new_users = [elem["uid"] for elem in new_users.json["userProfileList"]]
 
