@@ -5362,6 +5362,11 @@ def pile(data):
 • FOLLOWERS: {followers}"""
 		data.subClient.full_embed("ndc://x{data.comId}/user-profile/{data.authorId}",fif,msg,data.chatId)
 
+@client.command("userid", condition=is_black)
+def userid(data):
+	data.subClient.send_message(data.chatId,message=data.authorId,replyTo=data.messageId)
+
+
 @client.command("stopamino")
 def stop_amino(args):
     if client.check(args,'admin'):
@@ -5560,7 +5565,7 @@ def kundali(data):
     repa= data.subClient.get_user_info(userId=str(user)).reputation
     h=data.subClient.get_user_info(userId=str(user)).nickname
     lvl = data.subClient.get_user_info(userId=str(user)).level
-    crttime = data.subClient.get_user_info(userId=str(user)).createdTime
+    crttime = client.get_user_info(userId=str(user)).createdTime
     followers = data.subClient.get_user_achievements(userId=str(user)).numberOfFollowersCount
     profilchange = data.subClient.get_user_info(userId=str(user)).modifiedTime
     commentz = data.subClient.get_user_info(userId=str(user)).commentsCount
@@ -5641,7 +5646,7 @@ def adhaarcard(data):
     repa= data.subClient.get_user_info(userId=str(user)).reputation
     h=data.subClient.get_user_info(userId=str(user)).nickname
     lvl = data.subClient.get_user_info(userId=str(user)).level
-    crttime = data.subClient.get_user_info(userId=str(user)).createdTime
+    crttime = client.get_user_info(userId=str(user)).createdTime
     followers = data.subClient.get_user_achievements(userId=str(user)).numberOfFollowersCount
     profilchange = data.subClient.get_user_info(userId=str(user)).modifiedTime
     commentz = data.subClient.get_user_info(userId=str(user)).commentsCount
@@ -5760,7 +5765,7 @@ def kuli(data):
 			repa= data.subClient.get_user_info(userId=str(user)).reputation
 			h=data.subClient.get_user_info(userId=str(user)).nickname
 			lvl = data.subClient.get_user_info(userId=str(user)).level
-			crttime = data.subClient.get_user_info(userId=str(user)).createdTime
+			crttime = client.get_user_info(userId=str(user)).createdTime
 			followers = data.subClient.get_user_achievements(userId=str(user)).numberOfFollowersCount
 			profilchange = data.subClient.get_user_info(userId=str(user)).modifiedTime
 			commentz = data.subClient.get_user_info(userId=str(user)).commentsCount
@@ -5793,7 +5798,7 @@ def kuli(data):
 		repa= data.subClient.get_user_info(userId=data.authorId).reputation
 		h=data.subClient.get_user_info(userId=data.authorId).nickname
 		lvl = data.subClient.get_user_info(userId=data.authorId).level
-		crttime = data.subClient.get_user_info(userId=data.authorId).createdTime
+		crttime = client.get_user_info(userId=data.authorId).createdTime
 		followers = data.subClient.get_user_achievements(userId=data.authorId).numberOfFollowersCount
 		profilchange = data.subClient.get_user_info(userId=data.authorId).modifiedTime
 		commentz = data.subClient.get_user_info(userId=data.authorId).commentsCount
@@ -7071,7 +7076,7 @@ def userinfo(data):
     repa= data.subClient.get_user_info(userId=str(user)).reputation
     h=data.subClient.get_user_info(userId=str(user)).nickname
     lvl = data.subClient.get_user_info(userId=str(user)).level
-    crttime = data.subClient.get_user_info(userId=str(user)).createdTime
+    crttime = client.get_user_info(userId=str(user)).createdTime
     followers = data.subClient.get_user_achievements(userId=str(user)).numberOfFollowersCount
     profilchange = data.subClient.get_user_info(userId=str(user)).modifiedTime
     commentz = data.subClient.get_user_info(userId=str(user)).commentsCount
@@ -7205,7 +7210,7 @@ def ufo(data):
     repa= data.subClient.get_user_info(userId=str(user)).reputation
     h=data.subClient.get_user_info(userId=str(user)).nickname
     lvl = data.subClient.get_user_info(userId=str(user)).level
-    crttime = data.subClient.get_user_info(userId=str(user)).createdTime
+    crttime = client.get_user_info(userId=str(user)).createdTime
     followers = data.subClient.get_user_achievements(userId=str(user)).numberOfFollowersCount
     profilchange = data.subClient.get_user_info(userId=str(user)).modifiedTime
     commentz = data.subClient.get_user_info(userId=str(user)).commentsCount
@@ -7293,7 +7298,7 @@ def reove(data):
     	     	if val==None:
     	     	 	val="Private Chat"
     	     	mis=value["link"]
-    	     	for id, in chats:
+    	     	for id in chats:
     	     	 	data.subClient.send_message(chatId=id,message=f"""[c]{data.author} deleted message in {val}
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 
