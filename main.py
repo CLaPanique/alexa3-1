@@ -158,7 +158,7 @@ def yoooo():
   return listt
 #print(listt)
 count=len(yoooo())
-if count  >= 2000:
+if count  >= 1000:
   open("deleteds.txt","w").close()
 uyt=open("deleted.txt","w").close()
 def yoo():
@@ -169,7 +169,7 @@ def yoo():
   return listt
 #print(listt)
 count=len(yoo())
-if count  >= 2000:
+if count  >= 1000:
   open("deleted.txt","w").close()
 uyt=open("deletes.txt","w").close()
 def yooo():
@@ -180,7 +180,7 @@ def yooo():
   return listt
 #print(listt)
 count=len(yooo())
-if count  >= 2000:
+if count  >= 1000:
   open("deletes.txt","w").close()
 def print_exception(exc):
     print(repr(exc))
@@ -2012,6 +2012,9 @@ def snipe(data):
 		msdeel(data)
 	except:
 		pass
+	
+	
+	
 
 
 def msdeel(data):
@@ -4410,22 +4413,24 @@ def hate(data):
 def bg(data):
         image = data.subClient.get_chat_thread(chatId=data.chatId).backgroundImage
         if image is not None:
+                        	filetype = image.split(".")[-1]
                         	filename = image.split("/")[-1]
                         	urllib.request.urlretrieve(image, filename)
                         	with open(filename, 'rb') as fp:
                         	        	        	        		with suppress(Exception):
-                        	        	        	        		        			data.subClient.send_message(data.chatId, file=fp, fileType="image")
+                        	        	        	        		        			data.subClient.send_message(data.chatId, file=fp, fileType=filetype)
                         	        	        	        		        			os.remove(filename)
 
 @client.command("chaticon", condition=is_black)
 def chaticon(data):
         image = data.subClient.get_chat_thread(chatId=data.chatId).icon
         if image is not None:
+                        	filetype = image.split(".")[-1]
                         	filename = image.split("/")[-1]
                         	urllib.request.urlretrieve(image, filename)
                         	with open(filename, 'rb') as fp:
                         	        	        	        		with suppress(Exception):
-                        	        	        	        		        			data.subClient.send_message(data.chatId, file=fp, fileType="image")
+                        	        	        	        		        			data.subClient.send_message(data.chatId, file=fp, fileType=filetype)
 @client.command("sticker", condition=is_black)
 def sticker(data):
 	info = data.subClient.get_message_info(chatId = data.chatId, messageId = data.messageId)
@@ -7263,8 +7268,8 @@ def roove(data):
     	system(si)
 @client.on_remove()
 def reove(data):
-    print(data.comId)
-    client.show_online(data.comId)
+  #  print(data.comId)
+    #client.show_online(data.comId)
     if data.chatId:
     	du={}#b[.messageIdatad]="deleted"  
     	si="echo "+f"{data.messageId}"+">>deletes.txt"
@@ -7288,7 +7293,7 @@ def reove(data):
     	     	if val==None:
     	     	 	val="Private Chat"
     	     	mis=value["link"]
-    	     	for id, in zip(chats):
+    	     	for id, in chats:
     	     	 	data.subClient.send_message(chatId=id,message=f"""[c]{data.author} deleted message in {val}
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 
