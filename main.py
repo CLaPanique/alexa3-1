@@ -124,13 +124,13 @@ client=BotAmino(email="Loganpp2921@gmail.com",password="spamer123lodu")
 dbs=mongo['delete']
 jsn=dbs['mess']
 noo=jsn.count_documents({})
-if noo>=1000:
+if noo>=5000:
 	jsn.delete_many({})
 
 dbsh=mongo['deleted']
 jsoon=dbsh['messi']
 no=jsoon.count_documents({})
-if no>=1000:
+if no>=5000:
 	jsoon.delete_many({})
 
 dih=mongo['deleteds']
@@ -209,6 +209,7 @@ def join_community(comId: str = None, inv: str = None):
 def dbm(data):
 	jsn.delete_many({})
 	jsoon.delete_many({})
+	jsy.delete_many({})
 	data.subClient.send_message(data.chatId,message="Deleted")
 @client.command(condition=admins)
 def addadmin(data):
@@ -2008,10 +2009,6 @@ def snipe(data):
 		mediadel(data)
 	except:
 		pass
-	try:
-		msdeel(data)
-	except:
-		pass
 	
 	
 	
@@ -2047,7 +2044,7 @@ def mesdeel(data):
     		    	print(m)
     		    	if m:
     		    		#objInstance = ObjectId(m)
-    		    		value =jsoon.find_one({"ids": m})
+    		    		value =jsy.find_one({"ids": m})
     		    		x=data.subClient.get_user_info(value["userid"]).icon
     		    		response=requests.get(f"{x}")
     		    		file=open("samplle.png","wb")
@@ -5364,7 +5361,12 @@ def pile(data):
 
 @client.command("userid", condition=is_black)
 def userid(data):
-	data.subClient.send_message(data.chatId,message=data.authorId,replyTo=data.messageId)
+	mention = data.subClient.get_message_info(chatId=data.chatId, messageId=data.messageId).mentionUserIds
+	if mention!=None:
+		for user in mention:
+			data.subClient.send_message(data.chatId,message=user,replyTo=data.messageId)
+	else:
+		data.subClient.send_message(data.chatId,message=data.authorId,replyTo=data.messageId)		
 
 
 @client.command("stopamino")
