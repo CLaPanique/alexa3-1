@@ -149,7 +149,7 @@ try:
         deleted_messages = json.load(f)
 except Exception:
     deleted_messages = {}
-uyt=open("deleteds.txt","w").close()
+#uyt=open("deleteds.txt","w").close()
 def yoooo():
   listt=[]
   dell=open("deleteds.txt")
@@ -158,9 +158,9 @@ def yoooo():
   return listt
 #print(listt)
 count=len(yoooo())
-if count  >= 1000:
+if count  >= 5000:
   open("deleteds.txt","w").close()
-uyt=open("deleted.txt","w").close()
+#uyt=open("deleted.txt","w").close()
 def yoo():
   listt=[]
   dell=open("deleted.txt")
@@ -169,9 +169,9 @@ def yoo():
   return listt
 #print(listt)
 count=len(yoo())
-if count  >= 1000:
+if count  >= 5000:
   open("deleted.txt","w").close()
-uyt=open("deletes.txt","w").close()
+#uyt=open("deletes.txt","w").close()
 def yooo():
   listt=[]
   dell=open("deletes.txt")
@@ -180,7 +180,7 @@ def yooo():
   return listt
 #print(listt)
 count=len(yooo())
-if count  >= 1000:
+if count  >= 5000:
   open("deletes.txt","w").close()
 def print_exception(exc):
     print(repr(exc))
@@ -6969,17 +6969,17 @@ def mesge(data):
 	jsoon.insert_one(it)
 #	jsy.insert_one(it)
 	nioo=jsy.count_documents({})
-	if nioo>=3000:
+	if nioo>=5000:
 		jsy.delete_many({})
 	else:
 		pass
 	noo=jsn.count_documents({})
-	if noo>=3000:
+	if noo>=5000:
 		jsn.delete_many({})
 	else:
 		pass
 	no=jsoon.count_documents({})
-	if no>=3000:
+	if no>=5000:
 		jsoon.delete_many({})
 	else:
 		pass
