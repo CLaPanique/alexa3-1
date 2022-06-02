@@ -986,7 +986,7 @@ def Set_New_Bubble1(cli,headr,bubbleId):
 		print('\n',res.json()["api:message"])
 
 @client.command("copyb",condition=is_staff)
-def copy(data):
+def copyb(data):
 	if client.check(data,"admin"):
 		#cli=l_amino.Client("426906322DE9C58CCD9453182641EE981E7CD6BE512F118A43813FF95F9CCB9CC07EE95D2C94F51B8C")
 		#cli.login(prox=proxies,email="ab",password="000")
@@ -2429,6 +2429,7 @@ def moderation(args):
 ◈ banword [Banned word list]
 ◈ lockedlist [locked commands]
 ◈ global @user
+◈ searchuser {userlink} {comlink}
 ◈ check
 ◈ checkin
 ◈ blocklist
@@ -3339,7 +3340,7 @@ def gimg(args):
   	pass
 @client.command("img", condition=is_black)
 def img(args):
-  if client.check(data,"admin"):
+  if client.check(args,"admin"):
   	p=randint(1,10)
   	imfile= f"my_img{randint(1,500)}"
   	search = (args.message)
@@ -4764,8 +4765,26 @@ Time : {current_time}""",embedTitle=f"{args.author}",embedLink=f"ndc://x{args.co
 @client.command("chatid")
 def chatid(data):
 	data.subClient.send_message(data.chatId,message=f"{data.chatId}",replyTo=data.messageId)
-	
+@client.command("searchuser",condition=is_black)
+def searchuser(data):
+	msg=data.message.split(" ")
+	code1=msg[0]
+	code2=msg[1]
+	user=(client.get_from_code(code1).objectId)
+	cd=(client.get_from_code(code2))
+	cid=cd.path[1:cd.path.index("/")]
+	try:
+		ui=client.get_from_id(objectType=0,objectId=user,comId=cid).json
+		lin=ui["extensions"]["linkInfo"]["shareURLShortCode"]
+		data.subClient.send_message(data.chatId,message=f"""[cu]Alexa got user profile
 
+Link : {lin}
+
+""",embedTitle="Profile link",embedLink=f"{lin}",embedContent="Click here to reach user")
+	except:
+		data.subClient.send_message(data.chatId,message="User not available in that community",replyTo=data.messageId)
+		pass
+		
 @client.command("chatids")
 def chat_id(args):
     if client.check(args,'staff', 'admin'):
@@ -6923,7 +6942,7 @@ def mesge(data):
 		data.subClient.delete_message(chatId=data.chatId,messageId=data.messageId,asStaff=True,reason="muted user")
 	else:
 		pass
-	tm()
+	#tm()
 	#with suppress(Exception):
 	try:
 		time.sleep(30)
