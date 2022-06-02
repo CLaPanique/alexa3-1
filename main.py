@@ -793,7 +793,7 @@ def CreateZip2(ImgName):
 	Zip.close()
 
 def GenerateBubble():
-	api1 = f"{client.api}/g/s/chat/chat-bubble/templates/71b41f1a-4c09-4e07-ac9e-18ef9bbbe65f/generate"
+	api1 = f"{client.api}/g/s/chat/chat-bubble/templates/949156e1-cc43-49f0-b9cf-3bbbb606ad6e/generate"
 	data = open("OldBubble.zip","rb").read()
 	res = requests.post(api1,headers=header,data=data)
 	if res.status_code == 200 and res.json()["api:message"] == "OK":
@@ -2354,7 +2354,7 @@ def edit(args):
 
 ◈ icon
 ◈ nick
-◈ bgcolor {#colorcode}
+◈ bgcolor #colorcode
 ◈ background
 ◈ bubble
 ◈ frame
@@ -2407,8 +2407,8 @@ def chat(args):
 """
     args.subClient.full_embed("https://youtube.com/c/TechVision7",ff,msg,args.chatId)
 
-@client.command("img")
-def img(data):
+#@client.command("img")
+def imiig(data):
 	data.subClient.send_message(data.chatId,message="Image command is turned off")
 
 @client.command("moderation", condition=is_black)
@@ -3337,7 +3337,29 @@ def gimg(args):
   except:
   	args.subClient.send_message(args.chatId,message="Image not found",replyTo=args.messageId)
   	pass
-  	
+@client.command("img", condition=is_black)
+def img(args):
+  if client.check(data,"admin"):
+  	p=randint(1,10)
+  	imfile= f"my_img{randint(1,500)}"
+  	search = (args.message)
+  	gis = GoogleImagesSearch('AIzaSyAynK30eehfoGLNfE9M9FcLa02fkLgqHJo', '6db11cc9d8e3e8d87')
+  	_search_params = {'q': search,'num': 1}
+  	try:
+  		gis.search(search_params=_search_params,path_to_dir=f'{path_download}',custom_image_name=imfile)
+  		imgg=(f"{path_download}/{imfile}.jpg")
+  		Image.open(imgg).resize((800,700)).save("imagi.png")
+  		ff=open("imagi.png","rb")
+  		msg=f"[B]{args.message} requested by {args.author}"
+  		args.subClient.full_embed("https://youtube.com/c/TechVision7",ff,msg,args.chatId)
+  		os.remove(f"{path_download}/{imfile}.jpg")
+  	#os.remove("imagi.png")
+  	except:
+  		args.subClient.send_message(args.chatId,message="Image not found",replyTo=args.messageId)
+  		pass
+  else:
+  	args.subClient.send_message(args.chatId,message="Admin command",replyTo=args.messageId)
+		  	
 @client.command("pics")
 def pics(data):
 	data.subClient.send_message(data.chatId,message="Command locked",replyTo=data.messageId)
@@ -4882,51 +4904,7 @@ def stop(args):
         os.execv(sys.executable, ["None", "None"])
 
 
-@client.command("uinfo")
-def uinfo(args):
-        val = ""
-        val2 = ""
-        uid = ""
-        with suppress(Exception):
-            val = args.subClient.client.get_user_info(args.message)
-            val2 = args.subClient.get_user_info(args.message)
 
-        if not val:
-            uid = args.subClient.get_user_id(args.message)
-            if uid:
-                val = args.subClient.client.get_user_info(uid[1])
-                val2 = args.subClient.get_user_info(uid[1])
-
-        if not val:
-            with suppress(Exception):
-                lin = args.subClient.client.get_from_code(f"http://aminoapps.com/u/{args.message}").json["extensions"]["linkInfo"]["objectId"]
-                val = args.subClient.client.get_user_info(lin)
-
-            with suppress(Exception):
-                val2 = args.subClient.get_user_info(lin)
-
-        with suppress(Exception):
-            with open(path_eljson1, "w") as file:
-                file.write(dumps(val.json, sort_keys=True, indent=4))
-
-        with suppress(Exception):
-            with open(path_eljson2, "w") as file:
-                file.write(dumps(val2.json, sort_keys=True, indent=4))
-
-        for i in (path_eljson1, path_eljson2):
-            if os.path.getsize(i):
-                txt2pdf.callPDF(i, "result.pdf")
-                pages = convert_from_path('result.pdf', 150)
-                file = 'result.jpg'
-                for page in pages:
-                    page.save(file,  'JPEG')
-                    with open(file, 'rb') as fp:
-                        args.subClient.send_message(args.chatId, file=fp, fileType="image")
-                    os.remove(file)
-                os.remove("result.pdf")
-
-        if not os.path.getsize(path_eljson1) and not os.path.getsize(path_eljson1):
-            args.subClient.send_message(args.chatId, "Error!")
 @client.command("truth", condition=is_black)
 def truth(args):
   lis = ['[bi]What’s the last lie you told?',
@@ -5169,51 +5147,7 @@ def remoji(args):
 	lis = ['😰😨😱😓🤯', '??????🤕??', '🌝🥸👻🎃', '😺👹😈😇💩', '😛😉😊😘🥳', '🤣😀😆🥰🙂', '☺️😑🙃😶🤗', '🤩😋😔😌☺️', '🤫🤐🥺🙄🤔', '🧐😤😠😳🤯', '😓😥😩😖😵', '🌞🤮🤧🤒🎃', '😍😚🤭🥲😄', '😃😂🤣😭😰', '🤬😡😮😯😲', '🤓🤑🤠😇😷', '🥵🥶👺☠️👽', '😸😹😺😻😼', '😽🙀😿😾💀', '❤️🧡💛💚💙', '💜🤎🖤🤍♥️', '💘💝💖💗💓', '💞💕💌💟❣️', '💔💋👅👄👀', '🦾🦠🦷🏵️💐', '🧝🧙🧛🧟🥷', '😪😴🥱🤤🙄', '👿😈🔥⭐🌟', '🎊🎉🕳️💤💦', '🌜👻🤖💢⚡', '✨💫👁️🍂☀️', '🧠🫀🫁🩸🌡️', '👉👌🍺🍷👄', '🦁🐻🐼🐨🐹', '🐭🐷🐸🙉🐶', '🌌🌠🌉🌆🌃', '🕊️🦅🐦🦥🦏', '🐲🦖🐢🦮🐈', '🐐🦬🐖🐑🐆', '🦍🦧🐿️🦦🦈', '🐝🐠🐋🦋🐜', '🍔🍖🍗🌭🥪', '🥞🍳🫓🌮🍕', '🍉🍓🍒🫐🍎', '🧆🥙🥘🍜🦪', '🍧🍱🥟🍚🍢', '🍰🍙🍡🍣🍟', '🧇🥯🌯🥟🥡', '🍭🍩🍪🥮🍨', '🥗🍲🫕🍥🍿', '🥃🍾🍹🍸🍻', '🅿️🅾️🆘ℹ️🖕🏿', '🤏✋👊🙌👇', '👾🕹️🎮🎲🃏', '💵💴💶💷💰', '🇺🇸🇹🇨🇸🇻🇺🇦🇼🇸', '🏤🏣🏨🏥🏩']
 	args.subClient.send_message(args.chatId, message=str(random.choice(lis)))
 	
-@client.command("cinfo")
-def cinfo(args):
-        val = ""
-        with suppress(Exception):
-            val = args.subClient.client.get_from_code(f"http://aminoapps.com/c/{args.message}")
 
-        with suppress(Exception):
-            with open(path_eljson1, "w") as file:
-                file.write(dumps(val.json, sort_keys=True, indent=4))
-
-        if os.path.getsize(path_eljson1):
-            txt2pdf.callPDF(path_eljson1, "result.pdf")
-            pages = convert_from_path('result.pdf', 150)
-            for page in pages:
-                file = 'result.jpg'
-                page.save(file,  'JPEG')
-                with open(file, 'rb') as fp:
-                    args.subClient.send_message(args.chatId, file=fp, fileType="image")
-                os.remove(file)
-            os.remove("result.pdf")
-
-        if not os.path.getsize(path_eljson1):
-            args.subClient.send_message(args.chatId, "Error!")
-
-
-@client.command(condition=is_staff)
-def sendinfo(args):
-    if args.message != "":
-        arguments = args.message.strip().split()
-        for eljson in (path_eljson1, path_eljson2):
-            if Path(eljson).exists():
-                arg = arguments.copy()
-                with open(eljson, 'r') as file:
-                    val = load(file)
-                try:
-                    memoire = val[arg.pop(0)]
-                except Exception:
-                    args.subClient.send_message(args.chatId, 'Wrong key!')
-                if arg:
-                    for elem in arg:
-                        try:
-                            memoire = memoire[str(elem)]
-                        except Exception:
-                            args.subClient.send_message(args.chatId, 'Wrong key!')
-                args.subClient.send_message(args.chatId, memoire)
 @client.command("profile", condition=is_black)
 def profile(data):
     if data.message:
