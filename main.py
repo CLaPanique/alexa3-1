@@ -6212,7 +6212,7 @@ def claim(data):
 	user=data.authorId
 	if data.comId in claims:
 		rs=coi.find_one({"id":user})
-		if rs!=None:
+		if rs==None:
 			it={"id":user,"date":dat}
 			coi.insert_one(it)
 			lvl=data.subClient.get_user_info(user).level
