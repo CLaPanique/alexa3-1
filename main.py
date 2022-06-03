@@ -6235,6 +6235,7 @@ def claim(data):
 			else:
 				data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> increase your level to 5, you are below 5",replyTo=data.messageId, mentionUserIds=[data.authorId])
 		else:
+			rs=coi.find_one({"id":user})
 			dd=rs["date"]
 			if dat-dd!=0:
 				lvl=data.subClient.get_user_info(user).level
