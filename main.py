@@ -553,8 +553,8 @@ def join_amino(args):
         args.subClient.send_message(args.chatId, "Allready joined!")
         return
 
-key="5faf5ba7-fd3d-4005-a49d-ce64b74a9490"
-app_name="baba9922"
+key="9b2b409e-a14b-4953-9160-9e1ace0bd84f"
+app_name="task9922"
 
 def restarts():
     heroku_conn = heroku3.from_key(key)
@@ -2193,8 +2193,9 @@ def aminocoin(args):
     msg=f"""[C]Coin Commands
 [C]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 
-◈ coins [Free 38 Coins]
-◈ coin (amount) [Send Fakecoins]
+◈ claim [40 coins]
+◈ coin
+
 
 [C]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁"""
     args.subClient.full_embed("https://youtube.com/c/TechVision7",ff,msg,args.chatId)
@@ -2366,7 +2367,6 @@ def edit(args):
 ◈ follow
 ◈ unfollow
 ◈ cbubble {number}
-◈ copy
 ◈ checkbubble {number}
 ◈ delbubble {number}
 
@@ -2506,7 +2506,10 @@ def removetitle(args):
 @client.command("titlelist",condition=is_black)
 def titlelist(args):
     if client.check(args,"staff","admin"):
-    	user=(client.get_from_code(args.message.split(' ')[0]).objectId)
+    	if "http://aminoapps.com" in data.message:
+    		user=(client.get_from_code(args.message.split(' ')[0]).objectId)
+    	else:
+    		user=data.authorId
     	h=args.subClient.get_user_info(userId=str(user)).nickname
     	t=[]
     	tls=args.subClient.get_member_titles(user)
@@ -2612,7 +2615,7 @@ def kiss(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("kiss1.png").resize((800,400)).save("kiss2.png")
+		Image.open("kiss1.png").resize((800,500)).save("kiss2.png")
 		imgg=open("kiss2.png","rb")
 		msg=f"{data.author} kissed {nkn} 😘"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2632,7 +2635,7 @@ def hug(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("hug1.png").resize((800,400)).save("hug2.png")
+		Image.open("hug1.png").resize((800,500)).save("hug2.png")
 		imgg=open("hug2.png","rb")
 		msg=f"{data.author} hugged {nkn} 🤗"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2651,7 +2654,7 @@ def pat(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("pat1.png").resize((800,400)).save("pat2.png")
+		Image.open("pat1.png").resize((800,500)).save("pat2.png")
 		imgg=open("pat2.png","rb")
 		msg=f"{data.author} pat {nkn} 😊"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2671,7 +2674,7 @@ def cry(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("cry1.png").resize((800,400)).save("cry2.png")
+		Image.open("cry1.png").resize((800,500)).save("cry2.png")
 		imgg=open("cry2.png","rb")
 		msg=f"{data.author} made {nkn} cry 😭"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2690,7 +2693,7 @@ def punch(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("punch1.png").resize((800,400)).save("punch2.png")
+		Image.open("punch1.png").resize((800,500)).save("punch2.png")
 		imgg=open("punch2.png","rb")
 		msg=f"{data.author} punched {nkn} 🥊"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -3585,10 +3588,8 @@ def prank(data):
 
 [c]{data.author}
 [c]I kicked you from {h},
-
 [c]You can join again your GC {h}
 [c]Your Chatroom is safe
-
 [c]How was my prank :)
 
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
@@ -6189,12 +6190,80 @@ def confession_channel(args):
 @client.command("unconfession", condition=is_black)
 def unwelcome_channel(args):
     if client.check(args, 'staff','admin'):
-        args.subClient.unset_welcome_chat()
+        args.subClient.unset_welcome_chat(args.chatId)
         args.subClient.send_message(args.chatId, "Confession GC unset!")
         rebot()
     else:
     	args.subClient.send_message(args.chatId,message="Only Leader or Curator can set Confession GC")
 
+cons=mongo["coin"]
+coi=cons["coins"]
+ttt = open('claim.txt','r')
+claims=[]
+for m in ttt.read().splitlines():
+	temp=m
+	if temp not in claims:
+		claims.append(int(temp))
+@client.command("claim",condition=is_black)
+def claim(data):
+	current=datetime.now()
+	dat=current.day
+	wall=int(data.subClient.get_wallet_amount())
+	user=data.authorId
+	if data.comId in claims:
+		rs=coi.find_one({"id":user})
+		if rs!=None:
+			it={"id":user,"date":dat}
+			coi.insert_one(it)
+			lvl=data.subClient.get_user_info(user).level
+			blg=data.subClient.get_user_blogs(userId=user,size=1).blogId
+			if lvl==5 or lvl>=5:
+				if len(blg)!=0:
+					if wall>=500:
+						for bid in blg:
+							data.subClient.send_coins(coins=40,blogId=bid)
+							data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+[c]Congrats <$@{data.author}$>
+[c]You claimed 40+ coins
+[c]Claim again after 24 hours
+[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+""",mentionUserIds=[data.authorId])
+					else:
+						data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
+				else:
+					data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> post a  blog, you don't have blog",mentionUserIds=[data.authorId],replyTo=data.messageId)
+			else:
+				data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> increase your level to 5, you are below 5",replyTo=data.messageId, mentionUserIds=[data.authorId])
+		else:
+			dd=rs["date"]
+			if dat-dd!=0:
+				lvl=data.subClient.get_user_info(user).level
+				blg=data.subClient.get_user_blogs(userId=user,size=1).blogId
+				if lvl==5 or lvl>=5:
+					if len(blg)!=0:
+						if wall>=500:
+							for bid in blg:
+								data.subClient.send_coins(coins=40,blogId=bid)
+								data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+[c]Congrats <$@{data.author}$>
+[c]You claimed 40+ coins
+[c]Claim again after 24 hours
+[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+""",mentionUserIds=[data.authorId])
+							filter = { 'id': user}
+							newvalues = { "$set": { 'date': dat}}
+							coi.update_one(filter, newvalues)
+						else:
+							data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
+					else:
+						data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> post a  blog, you don't have blog",mentionUserIds=[data.authorId],replyTo=data.messageId)
+				else:
+					data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> increase your level to 5, you are below 5",replyTo=data.messageId, mentionUserIds=[data.authorId])
+			else:
+				data.subClient.send_message(data.chatId,message=f"""<$@{data.author}$> you already claimed today
+You can claim again after 24 hours""",replyTo=data.messageId, mentionUserIds=[data.authorId])
+	else:
+		data.subClient.send_message(data.chatId,message="Claim command is off for this community, talk to Alexa owner",replyTo=data.messageId)
 
 @client.command("level")
 def level(args):
