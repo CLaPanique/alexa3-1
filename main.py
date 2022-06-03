@@ -162,22 +162,22 @@ if count  >= 5000:
   open("deleteds.txt","w").close()
 #uyt=open("deleted.txt","w").close()
 def yoo():
-  listt=[]
+  listtt=[]
   dell=open("deleted.txt")
   for line in dell:
     listt.append(line.strip())
-  return listt
+  return listtt
 #print(listt)
 count=len(yoo())
 if count  >= 5000:
   open("deleted.txt","w").close()
 #uyt=open("deletes.txt","w").close()
 def yooo():
-  listt=[]
+  listttt=[]
   dell=open("deletes.txt")
   for line in dell:
     listt.append(line.strip())
-  return listt
+  return listttt
 #print(listt)
 count=len(yooo())
 if count  >= 5000:
@@ -2009,6 +2009,10 @@ def snipe(data):
 		mediadel(data)
 	except:
 		pass
+	try:
+		msdeel(data)
+	except:
+		pass
 	
 	
 	
@@ -2608,7 +2612,7 @@ def kiss(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("kiss1.png").resize((800,800)).save("kiss2.png")
+		Image.open("kiss1.png").resize((800,400)).save("kiss2.png")
 		imgg=open("kiss2.png","rb")
 		msg=f"{data.author} kissed {nkn} 😘"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2628,7 +2632,7 @@ def hug(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("hug1.png").resize((800,800)).save("hug2.png")
+		Image.open("hug1.png").resize((800,400)).save("hug2.png")
 		imgg=open("hug2.png","rb")
 		msg=f"{data.author} hugged {nkn} 🤗"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2647,7 +2651,7 @@ def pat(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("pat1.png").resize((800,800)).save("pat2.png")
+		Image.open("pat1.png").resize((800,400)).save("pat2.png")
 		imgg=open("pat2.png","rb")
 		msg=f"{data.author} pat {nkn} 😊"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2667,7 +2671,7 @@ def cry(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("cry1.png").resize((800,800)).save("cry2.png")
+		Image.open("cry1.png").resize((800,400)).save("cry2.png")
 		imgg=open("cry2.png","rb")
 		msg=f"{data.author} made {nkn} cry 😭"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -2686,7 +2690,7 @@ def punch(data):
 		file=open(filename,"wb")
 		file.write(reqs.content)
 		file.close()
-		Image.open("punch1.png").resize((800,800)).save("punch2.png")
+		Image.open("punch1.png").resize((800,400)).save("punch2.png")
 		imgg=open("punch2.png","rb")
 		msg=f"{data.author} punched {nkn} 🥊"
 		data.subClient.full_embed("https://youtube.com/c/TechVision7",imgg,msg,data.chatId)
@@ -7232,7 +7236,7 @@ def reove(data):
     #client.show_online(data.comId)
     if data.chatId:
     	du={}#b[.messageIdatad]="deleted"  
-    	si="echo "+f"{data.messageId}"+">>deletes.txt"
+    	si="echo "+f"{data.messageId}"+f">>deletes.txt"
     	system(si)
     	messages = data.subClient.get_chat_messages(data.chatId,5).messageId
     	for m in messages:
