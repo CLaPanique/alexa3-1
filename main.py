@@ -165,7 +165,7 @@ def yoo():
   listtt=[]
   dell=open("deleted.txt")
   for line in dell:
-    listt.append(line.strip())
+    listtt.append(line.strip())
   return listtt
 #print(listt)
 count=len(yoo())
@@ -176,7 +176,7 @@ def yooo():
   listttt=[]
   dell=open("deletes.txt")
   for line in dell:
-    listt.append(line.strip())
+    listttt.append(line.strip())
   return listttt
 #print(listt)
 count=len(yooo())
