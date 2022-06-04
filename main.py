@@ -6213,8 +6213,7 @@ def claim(data):
 	if data.comId in claims:
 		rs=coi.find_one({"id":user})
 		if rs==None:
-			it={"id":user,"date":dat}
-			coi.insert_one(it)
+			
 			lvl=data.subClient.get_user_info(user).level
 			blg=data.subClient.get_user_blogs(userId=user,size=1).blogId
 			if lvl==5 or lvl>=5:
@@ -6228,6 +6227,8 @@ def claim(data):
 [c]Claim again after 24 hours
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 """,mentionUserIds=[data.authorId])
+							it={"id":user,"date":dat}
+							coi.insert_one(it)
 					else:
 						data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
 				else:
@@ -6254,6 +6255,7 @@ def claim(data):
 							filter = { 'id': user}
 							newvalues = { "$set": { 'date': dat}}
 							coi.update_one(filter, newvalues)
+							rebot()
 						else:
 							data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
 					else:
