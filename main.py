@@ -2787,11 +2787,16 @@ def on_chat_tip(data):
 	subClient.send_message(chatId=args.chatId, message=reply)
 	
 def taskss(daa):
-	resp=requests.post('https://Summon.donothack123.repl.co/sig-gen',data=daa)
-#@client.command("summon", condition=is_black)
+	resp=requests.post('https://aman23.herokuapp.com/sig-gen/',data=daa)
+	return resp
+@client.command("summon", condition=is_black)
 def summon(data):
+	param={"chatId":data.chatId,"comId":data.comId}
+	d=json.dumps(param)
+	daa={"data":d}
+	taskss(daa)
 	#client.join_screen_room(data.comId,data.chatId)
-	data.subClient.send_message(data.chatId,message="Summon started")
+	#data.subClient.send_message(data.chatId,message="Summon started")
 
 @client.command("gcweloff")
 def gcweloff(data):
