@@ -2,7 +2,7 @@
 #from keep_alive import keep_alive
 #keep_alive()
 from os import system
-#system("pip install gtts")
+system("pip install requests")
 #system("pip install pyjokes")
 #system("pip install websocket-client==0.57.0")
 #system("pip install fancy_text")
@@ -12,7 +12,7 @@ from os import system
 #from keep_alive import keep_alive
 #keep_alive()
 #system("pip install BotAmino==1.20.4")
-from Tam import l_amino
+#from Tam import l_amino
 import sys
 import copy
 from zipfile import ZipFile
