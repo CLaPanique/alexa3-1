@@ -6217,10 +6217,10 @@ def claim(data):
 				if len(blg)!=0:
 					if wall>=500:
 						for bid in blg:
-							data.subClient.send_coins(coins=40,blogId=bid)
+							data.subClient.send_coins(coins=38,blogId=bid)
 							data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 [c]Congrats <$@{data.author}$>
-[c]You claimed 40+ coins
+[c]You claimed 38+ coins
 [c]Claim again after 24 hours
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 """,mentionUserIds=[data.authorId])
@@ -6242,10 +6242,10 @@ def claim(data):
 					if len(blg)!=0:
 						if wall>=500:
 							for bid in blg:
-								data.subClient.send_coins(coins=40,blogId=bid)
+								data.subClient.send_coins(coins=38,blogId=bid)
 								data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 [c]Congrats <$@{data.author}$>
-[c]You claimed 40+ coins
+[c]You claimed 38+ coins
 [c]Claim again after 24 hours
 [c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
 """,mentionUserIds=[data.authorId])
