@@ -120,20 +120,20 @@ for i in ress:
 	sidss=i["sid"]
 
 #client=BotAmino(sid=sidss)
-client=BotAmino(email="Loganpp2921@gmail.com",password="spamer123lodu")
-dbs=mongo['delete']
+client=BotAmino()
+dbs=mongo['delete1']
 jsn=dbs['mess']
 noo=jsn.count_documents({})
 if noo>=5000:
 	jsn.delete_many({})
 
-dbsh=mongo['deleted']
+dbsh=mongo['deleted1']
 jsoon=dbsh['messi']
 no=jsoon.count_documents({})
 if no>=5000:
 	jsoon.delete_many({})
 
-dih=mongo['deleteds']
+dih=mongo['deleteds1']
 jsy=dih['messe']
 file = "old_messages.json"
 filed = "deleted_messages.json"
@@ -3622,20 +3622,12 @@ Time : {current_time}""",embedTitle=f"{data.author}",embedLink=f"ndc://x{data.co
 
 @client.command("check", condition=is_black)
 def check(data):
-	results=test_1.find({},{'_id': 0})
 	lists=[]
-	for i in results:
-		#print(i)
-		y=i["comid"]
-		if y not in lists:
-			lists.append(y)
-	#f=open("comid.txt","r")
-	#Counter = 0
-	#Content = f.read()
-	#CoList = Content.split("\n")
-	#for i in CoList:
-	#	if i:
-			#Counter += 1
+	f=open("comid.txt","r")
+	for m in t.read().splitlines():
+		temp=m
+		if temp not in lists:
+			lists.append(int(temp))
 	count=len(lists)
 	rol=data.subClient.get_user_info(userId=client.userId).json["role"]
 	xh=data.subClient.favorite_chats
@@ -6968,14 +6960,14 @@ Time : {current_time}""",embedTitle=f"{args.author}",embedLink=f"ndc://x{args.co
         	pass
 
 def rebot():
-	os.remove("comid.txt")
-	file=open("comid.txt","w")
+#	os.remove("comid.txt")
+#	file=open("comid.txt","w")
 	os.execv(sys.executable, ['python'] + sys.argv)        	
 @client.command()
 def reboot(args):
         if client.check(args,'admin'):
-        	os.remove("comid.txt")
-        	file=open("comid.txt","w")
+        	#os.remove("comid.txt")
+        #	file=open("comid.txt","w")
         	args.subClient.send_message(args.chatId, "Restarting Bot")
         	os.execv(sys.executable, ['python'] + sys.argv)
         else:
@@ -6984,8 +6976,8 @@ def reboot(args):
 @client.command()
 def restartbot(args):
         if client.check(args,'admin'):
-        	os.remove("comid.txt")
-        	file=open("comid.txt","w")
+        	#os.remove("comid.txt")
+        	#file=open("comid.txt","w")
         	#args.subClient.send_message(args.chatId, "Restarting Bot")
         	os.execv(sys.executable, ['python'] + sys.argv)
 
