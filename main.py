@@ -120,7 +120,7 @@ for i in ress:
 	sidss=i["sid"]
 
 #client=BotAmino(sid=sidss)
-client=BotAmino()
+client=BotAmino(email="kaushikjais999@gmail.com",password="wolvrine")
 dbs=mongo['delete1']
 jsn=dbs['mess']
 noo=jsn.count_documents({})
