@@ -13,7 +13,7 @@ names
 bs4
 gTTS
 fancy_text
-pillow==8.4.0
+pillow
 pytz
 websocket-client==0.57.0
 websockets
