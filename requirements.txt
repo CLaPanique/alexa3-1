@@ -1,5 +1,6 @@
 pymongo
 numpy
+requests
 aiohttp
 pyjokes
 requests_random_user_agent
