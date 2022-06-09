@@ -3623,7 +3623,7 @@ Time : {current_time}""",embedTitle=f"{data.author}",embedLink=f"ndc://x{data.co
 @client.command("check", condition=is_black)
 def check(data):
 	lists=[]
-	f=open("comid.txt","r")
+	t=open("comid.txt","r")
 	for m in t.read().splitlines():
 		temp=m
 		if temp not in lists:
