@@ -89,8 +89,8 @@ adm=["501cc6f5-1e38-4a22-9df5-cd0625b0205e","816d376a-29f3-4964-aa52-998517905c2
 
 admn=["501cc6f5-1e38-4a22-9df5-cd0625b0205e"]
 
-mdd=mongo['community']
-jsonf=mdd["files"]
+mdd=mongo['comm']
+jsonf=mdd["file"]
 with suppress(Exception):
     for i in (path_utilities, path_amino):
         Path(i).mkdir(exist_ok=True)
