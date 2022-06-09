@@ -15,9 +15,9 @@ from .extensions import *
 mongo = MongoClient("mongodb://alexa:aman@cluster0-shard-00-00.3nela.mongodb.net:27017,cluster0-shard-00-01.3nela.mongodb.net:27017,cluster0-shard-00-02.3nela.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-ngo3g6-shard-0&authSource=admin&retryWrites=true&w=majority")
 #mongo = MongoClient("mongodb://levi:ravi@cluster0-shard-00-00.jm6ez.mongodb.net:27017,cluster0-shard-00-01.jm6ez.mongodb.net:27017,cluster0-shard-00-02.jm6ez.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-4586d7-shard-0&authSource=admin&retryWrites=true&w=majority")
 tvs=mongo["coms"]
-dbmm=mongo['community']
+dbmm=mongo['comm']
 test4=tvs["filee"]
-test2=dbmm['files']
+test2=dbmm['file']
 #path_utilities = "utilities"
 #path_amino = f'{path_utilities}/amino_list'
 #path_wel = 'welcome_list'
