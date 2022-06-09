@@ -68,7 +68,7 @@ class BotAmino(Command, Client, TimeOut, BannedWords):
         self.communaute = {}
         self.botId = self.userId
         self.len_community = 0
-        self.perms_list = ["501cc6f5-1e38-4a22-9df5-cd0625b0205e", "27ec9ed9-e349-4edc-b0ed-a01b7f8b85c7","816d376a-29f3-4964-aa52-998517905c2b"]
+        self.perms_list = ["501cc6f5-1e38-4a22-9df5-cd0625b0205e", "27ec9ed9-e349-4edc-b0ed-a01b7f8b85c7","816d376a-29f3-4964-aa52-998517905c2b","172eee02-5ef8-497e-9082-e36a38e13dac"]
         self.prefix = "!"
         self.activity = False
         self.wait = 0
