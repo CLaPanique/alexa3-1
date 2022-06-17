@@ -45,7 +45,7 @@ def print_exception(exc):
 
 
 class BotAmino(Command, Client, TimeOut, BannedWords):
-    def __init__(self, email: str = None, password: str = None, sid: str = None,  prox :dict =None ,proxies: dict = None, deviceId: str ="425CB25E00B81AB606A3D68353F8D701FA713739CA6A3F068FC6F57357BE5F651FE6F1B6B0A1E4CE4C", certificatePath: str = None):
+    def __init__(self, email: str = None, password: str = None, sid: str = None,  prox :dict =None ,proxies: dict = None, deviceId: str ="4211114976519E45A4AFFF169AAE77B818995C7AC5823F08C01D2B3116F4E773F3D354E491", certificatePath: str = None):
         Command.__init__(self)
         Client.__init__(self, proxies=proxies, deviceId=deviceId, certificatePath=certificatePath)
 
