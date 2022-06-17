@@ -119,8 +119,8 @@ ress=sit.find({},{'_id': 0})
 for i in ress:
 	sidss=i["sid"]
 
-#client=BotAmino(sid=sidss)
-client=BotAmino(email="kaushikjais999@gmail.com",password="Kamina1234")
+client=BotAmino(sid=sidss)
+#client=BotAmino(email="kaushikjais999@gmail.com",password="Kamina1234")
 dbs=mongo['delete1']
 jsn=dbs['mess']
 noo=jsn.count_documents({})
