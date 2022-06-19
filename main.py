@@ -119,7 +119,7 @@ ress=sit.find({},{'_id': 0})
 for i in ress:
 	sidss=i["sid"]
 
-client=BotAmino(sid=sidss)
+client=BotAmino(sid="AnsiMSI6IG51bGwsICIwIjogMiwgIjMiOiAwLCAiMiI6ICI4MTZkMzc2YS0yOWYzLTQ5NjQtYWE1Mi05OTg1MTc5MDVjMmIiLCAiNSI6IDE2NTU2MTI3MjksICI0IjogIjQ3LjkuMTYzLjE4NCIsICI2IjogMTAwfajWGUffsv4mq2q5abKKiDTTSh5t")
 #client=BotAmino(email="kaushikjais999@gmail.com",password="Kamina1234")
 dbs=mongo['delete1']
 jsn=dbs['mess']
