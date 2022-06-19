@@ -72,8 +72,8 @@ db=mongo['comid']
 test_1=db['list2']
 ob=mongo["gcwel"]
 gcw=ob["list3"]
-si=mongo["sid"]
-sit=si["sds"]
+si=mongo["sidd"]
+sit=si["sdsss"]
 #import cleverbotfree
 #keep_alive()
 path_utilities='utilities'
@@ -119,21 +119,21 @@ ress=sit.find({},{'_id': 0})
 for i in ress:
 	sidss=i["sid"]
 
-client=BotAmino(sid="AnsiMSI6IG51bGwsICIwIjogMiwgIjMiOiAwLCAiMiI6ICI4MTZkMzc2YS0yOWYzLTQ5NjQtYWE1Mi05OTg1MTc5MDVjMmIiLCAiNSI6IDE2NTU2MTI3MjksICI0IjogIjQ3LjkuMTYzLjE4NCIsICI2IjogMTAwfajWGUffsv4mq2q5abKKiDTTSh5t")
+client=BotAmino(sid=sidss)
 #client=BotAmino(email="kaushikjais999@gmail.com",password="Kamina1234")
-dbs=mongo['delete1']
+dbs=mongo['delete11']
 jsn=dbs['mess']
 noo=jsn.count_documents({})
 if noo>=5000:
 	jsn.delete_many({})
 
-dbsh=mongo['deleted1']
+dbsh=mongo['deleted111']
 jsoon=dbsh['messi']
 no=jsoon.count_documents({})
 if no>=5000:
 	jsoon.delete_many({})
 
-dih=mongo['deleteds1']
+dih=mongo['deleteds1111']
 jsy=dih['messe']
 file = "old_messages.json"
 filed = "deleted_messages.json"
@@ -274,15 +274,15 @@ def aud(data):
 	data.subClient.send_message(data.chatId,message="kgf harami choti bhag copyb")
 
 
-@client.command("sidchange",condition=is_staff)
+@client.command("sidchange")
 def sidchange(data):
 	try:
 		sit.drop()
 		time.sleep(1)
 		it={"sid":data.message}
 		sit.insert_one(it)
-		data.subClient.send_message(chatId=data.chatId,message="Sid changed")
-		#rebot()
+		#data.subClient.send_message(chatId=data.chatId,message="Sid changed")
+		rebot()
 	except:
 		data.subClient.send_message(message="Error in sid",chatId=data.chatId)
 def tm():
@@ -3628,7 +3628,7 @@ def check(data):
 		temp=m
 		if temp not in lists:
 			lists.append(int(temp))
-	count=len(lists)
+	count=1
 	rol=data.subClient.get_user_info(userId=client.userId).json["role"]
 	xh=data.subClient.favorite_chats
 	if len(xh)!=0 and data.subClient.is_in_staff(client.userId):
@@ -6193,16 +6193,85 @@ def unwelcome_channel(args):
     else:
     	args.subClient.send_message(args.chatId,message="Only Leader or Curator can set Confession GC")
 
-cons=mongo["coin"]
-coi=cons["coins"]
+cons=mongo["coinss"]
+coi=cons["coinsss"]
 ttt = open('claim.txt','r')
 claims=[]
 for m in ttt.read().splitlines():
 	temp=m
 	if temp not in claims:
 		claims.append(int(temp))
-@client.command("claim",condition=is_black)
+
+@client.command("claim", condition=is_black)
 def claim(data):
+	rs=coi.find_one({"id":data.authorId})
+	current=datetime.now()
+	dat=current.day
+	wall=int(data.subClient.get_wallet_amount())
+	user=data.authorId
+	if data.chatId=="70ad741a-242c-403c-ae3a-ad7211b584cc":
+		rs=coi.find_one({"id":user})
+		if rs==None:
+			
+			lvl=data.subClient.get_user_info(user).level
+			blg=data.subClient.get_user_blogs(userId=user,size=1).blogId
+			if lvl==5 or lvl>=5:
+				if len(blg)!=0:
+					if wall>=50:
+						for bid in blg:
+							data.subClient.send_coins(coins=40,blogId=bid)
+							data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+[c]Congrats <$@{data.author}$>
+[c]You claimed 40+ coins
+[c]Claim again after 24 hours
+[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+""",mentionUserIds=[data.authorId])
+							it={"id":user,"date":dat}
+							coi.insert_one(it)
+							rebot()
+					else:
+						data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
+				else:
+					data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> post a  blog, you don't have blog",mentionUserIds=[data.authorId],replyTo=data.messageId)
+			else:
+				data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> increase your level to 5, you are below 5",replyTo=data.messageId, mentionUserIds=[data.authorId])
+		else:
+			rs=coi.find_one({"id":user})
+			dd=rs["date"]
+			if dat-dd!=0:
+				lvl=data.subClient.get_user_info(user).level
+				blg=data.subClient.get_user_blogs(userId=user,size=1).blogId
+				if lvl==5 or lvl>=5:
+					if len(blg)!=0:
+						if wall>=500:
+							for bid in blg:
+								data.subClient.send_coins(coins=40,blogId=bid)
+								data.subClient.send_message(data.chatId,message=f"""[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+[c]Congrats <$@{data.author}$>
+[c]You claimed 40+ coins
+[c]Claim again after 24 hours
+[c]𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁𐄙𐄁
+""",mentionUserIds=[data.authorId])
+							filter = { 'id': user}
+							newvalues = { "$set": { 'date': dat}}
+							coi.update_one(filter, newvalues)
+							rebot()
+						else:
+							data.subClient.send_message(data.chatId,message="Sorry,my Wallet is empty",replyTo=data.messageId)
+					else:
+						data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> post a  blog, you don't have blog",mentionUserIds=[data.authorId],replyTo=data.messageId)
+				else:
+					data.subClient.send_message(data.chatId,message=f"<$@{data.author}$> increase your level to 5, you are below 5",replyTo=data.messageId, mentionUserIds=[data.authorId])
+			else:
+				data.subClient.send_message(data.chatId,message=f"""<$@{data.author}$> you already claimed today
+You can claim again after 24 hours""",replyTo=data.messageId, mentionUserIds=[data.authorId])
+	else:
+		op=client.get_from_id(objectId="70ad741a-242c-403c-ae3a-ad7211b584cc",objectType="12",comId=data.comId).json
+		chatlink=op["extensions"]["linkInfo"]["shareURLShortCode"]
+		data.subClient.send_message(data.chatId,message=f"Claim coins in this gc \n{chatlink}",replyTo=data.messageId)
+
+@client.command("clim",condition=is_black)
+def clim(data):
 	current=datetime.now()
 	dat=current.day
 	wall=int(data.subClient.get_wallet_amount())
